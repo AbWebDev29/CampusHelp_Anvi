@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compare Engineering Colleges · CampusHelp</title>
+  <style>
+    :root { color-scheme: light; --ink:#293b55; --muted:#687a90; --line:#dfe5ef; --mint:#73c9bd; --lavender:#8294e8; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; padding:0 24px 48px; color:var(--ink); font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:radial-gradient(ellipse at 14% 0%,#ffead7 0,transparent 40%),radial-gradient(ellipse at 91% 13%,#e5e3ff 0,transparent 44%),linear-gradient(145deg,#f6f3ed,#fff8f4 52%,#f0f4fc); }
+    .frame-header { position:sticky; top:10px; z-index:5; width:min(1180px,100%); min-height:68px; margin:0 auto; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; gap:18px; border:1px solid rgba(80,111,146,.18); border-radius:0 0 18px 18px; background:rgba(255,252,248,.9); box-shadow:0 12px 32px rgba(74,86,120,.1); backdrop-filter:blur(14px); }
+    .wordmark { display:flex; align-items:center; gap:10px; color:inherit; font-weight:800; text-decoration:none; white-space:nowrap; }
+    .mark { width:36px; height:36px; display:grid; place-items:center; border-radius:11px; background:linear-gradient(145deg,#a9e3d5,#c3c3f3); }
+    .header-nav { display:flex; flex-wrap:wrap; justify-content:flex-end; align-items:center; gap:10px 20px; }
+    .header-nav a { color:#405675; font-weight:650; text-decoration:none; }
+    .step { color:#75839a; font-size:.8rem; }
+    main { width:min(1180px,100%); margin:44px auto 0; }
+    .intro { max-width:800px; margin-bottom:24px; }
+    .eyebrow { color:#538e91; font-size:.78rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+    h1 { margin:.45rem 0 .65rem; font-size:clamp(2rem,4vw,3.2rem); line-height:1.08; letter-spacing:-.045em; background:linear-gradient(110deg,#467bad,#7b83c7 65%,#bb849f); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .intro p { max-width:72ch; margin:0; color:var(--muted); line-height:1.7; }
+    .panel { margin-top:22px; padding:clamp(18px,3vw,30px); border:1px solid rgba(79,112,149,.17); border-radius:24px; background:rgba(255,253,250,.9); box-shadow:0 18px 48px rgba(62,86,125,.1); }
+    .panel-heading { display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:16px; }
+    h2 { margin:0; font-size:1.2rem; }
+    .panel-heading p { margin:.35rem 0 0; color:var(--muted); font-size:.93rem; }
+    .selection-count { padding:.45rem .75rem; border-radius:999px; background:#e8f4f2; color:#477f7e; font-weight:750; white-space:nowrap; }
+    .directory-wrap { margin-top:18px; overflow:auto; border:1px solid var(--line); border-radius:16px; background:#fff; }
+    .directory-table { width:100%; min-width:1250px; border-collapse:collapse; }
+    .directory-table th,.directory-table td { padding:12px 13px; border-bottom:1px solid #e8ebf1; text-align:left; vertical-align:top; line-height:1.4; }
+    .directory-table thead th { position:sticky; top:0; z-index:1; color:#344a64; background:#e9ecf8; white-space:nowrap; }
+    .directory-table tbody tr:nth-child(even) { background:#f8f9fc; }
+    .directory-table tbody tr:has(input:checked) { background:#f0faf7; }
+    .directory-table tbody tr:last-child td { border-bottom:0; }
+    .directory-table td:first-child { width:54px; text-align:center; }
+    .directory-table td:nth-child(2) { min-width:220px; font-weight:750; }
+    .directory-table td:nth-child(3) { min-width:180px; }
+    .directory-table input { width:18px; height:18px; accent-color:#5daea5; }
+    .directory-table a { color:#527fba; font-weight:700; }
+    .controls { margin-top:18px; display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+    button { min-height:44px; padding:0 18px; border:0; border-radius:999px; font:inherit; font-weight:750; cursor:pointer; }
+    #compareButton { color:#fff; background:linear-gradient(110deg,var(--mint),var(--lavender)); box-shadow:0 8px 20px rgba(112,151,200,.2); }
+    #compareButton:disabled { opacity:.45; cursor:not-allowed; box-shadow:none; }
+    #clearButton { color:#506782; border:1px solid var(--line); background:#fff; }
+    .selection-help { color:var(--muted); font-size:.85rem; }
+    .compare-results { display:none; margin-top:24px; }
+    .compare-results.is-visible { display:block; }
+    .compare-results h2 { margin-bottom:12px; }
+    .table-wrap { overflow:auto; border:1px solid var(--line); border-radius:16px; background:#fff; }
+    table { width:100%; min-width:780px; border-collapse:collapse; }
+    th,td { padding:13px 14px; border-bottom:1px solid #e8ebf1; text-align:left; vertical-align:top; line-height:1.45; }
+    thead th { position:sticky; top:0; z-index:1; color:#344a64; background:#e9ecf8; }
+    tbody th { width:210px; color:#526983; background:#f8f9fc; font-size:.9rem; }
+    tbody td { color:#415770; }
+    tbody tr:last-child th, tbody tr:last-child td { border-bottom:0; }
+    td a { color:#527fba; font-weight:700; }
+    .metric-unavailable { color:#8a94a4; font-size:.88rem; }
+    .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    .method-note { margin:16px 0 0; color:#75839a; font-size:.84rem; line-height:1.6; }
+    .method-note a { color:#527fba; }
+    .status { min-height:1.3em; margin:10px 0 0; color:#9b5258; font-size:.85rem; }
+    @media (max-width:720px) { body { padding:0 14px 30px; } main { margin-top:30px; } .frame-header { padding:10px 12px; } .header-nav { gap:8px 12px; } .header-nav a { font-size:.88rem; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition-duration:.01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="frame-header">
+    <a class="wordmark" href="/extension"><span class="mark">C</span><span>CampusHelp</span></a>
+    <nav class="header-nav" aria-label="Workspace navigation"><span class="step">Step 3 of 3 · College comparison</span><a href="/extension">Back to workspace</a></nav>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <span class="eyebrow">Make an informed shortlist</span>
+      <h1 id="page-title">Compare engineering colleges</h1>
+      <p>Select up to four colleges to compare the same admissions list side by side. Enrollment and placement figures use the 2025 NIRF Engineering disclosures for academic year 2023–24 where available.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="select-title">
+      <div class="panel-heading"><div><h2 id="select-title">College comparison data</h2><p>Select colleges from the table below. Choose two to four for a side-by-side view.</p></div><span class="selection-count" id="selectionCount" aria-live="polite">0 / 4 selected</span></div>
+      <div class="directory-wrap" role="region" aria-label="College data and selection table" tabindex="0" id="collegeDirectory"></div>
+      <div class="controls"><button type="button" id="compareButton" disabled>Compare selected</button><button type="button" id="clearButton">Clear selection</button><span class="selection-help">Select up to four colleges using the first column.</span></div>
+      <p class="status" id="selectionStatus" role="status" aria-live="polite"></p>
+      <section class="compare-results" id="compareResults" aria-labelledby="results-title" aria-live="polite">
+        <h2 id="results-title">Comparison</h2>
+        <div class="table-wrap" id="comparisonTable"></div>
+        <p class="method-note">Definitions: student count is actual UG four-year programme strength; placements are UG four-year graduates placed in 2023–24, as reported in NIRF 2025. A dash means the same NIRF disclosure was not available for that institution. Comparable paper and patent totals are not published in this NIRF engineering disclosure. JEE Main cutoffs depend on the college’s admission route, programme, year and category. College entrance exams may publish scores or ranks instead of percentiles; these vary by branch and counselling round. Check each college’s official admissions page. <a href="https://www.nirfindia.org/Rankings/2025/EngineeringRanking.html" target="_blank" rel="noopener noreferrer">NIRF 2025 Engineering ranks</a> · <a href="https://www.nirfindia.org/Rankings/2025/EngineeringRanking200.html" target="_blank" rel="noopener noreferrer">Rank band 151–200</a> · <a href="https://www.nirfindia.org/Rankings/2025/EngineeringRanking300.html" target="_blank" rel="noopener noreferrer">Rank band 201–300</a>.</p>
+      </section>
+    </section>
+  </main>
+  <script src="/js/college-compare.js" defer></script>
+</body>
+</html>

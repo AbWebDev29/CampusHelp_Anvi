@@ -217,7 +217,7 @@
 
     .entries {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: minmax(0, 1fr);
       gap: 1.2rem;
       margin-top: 1rem;
     }
@@ -292,6 +292,24 @@
       color: #9ca3af;
       font-size: 0.78rem;
     }
+
+    .entry-fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .7rem 1rem;
+      margin: .85rem 0 1rem;
+    }
+    .entry-field { min-width: 0; padding: .72rem .8rem; border: 1px solid rgba(79,112,149,.15); border-radius: 12px; background: rgba(255,255,255,.62); }
+    .entry-field dt { margin-bottom: .22rem; color: #8190a4; font-size: .76rem; font-weight: 650; letter-spacing: .045em; text-transform: uppercase; }
+    .entry-field dt { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+    .entry-field dd { margin: 0; color: #3e526d; line-height: 1.45; overflow-wrap: anywhere; }
+    .entry-card .copy-field-button { flex: 0 0 auto; margin: 0; padding: .23rem .55rem; border: 1px solid rgba(79,112,149,.18); border-radius: 999px; background: #edf4f8; color: #4f6e8a; box-shadow: none; font-size: .7rem; line-height: 1.2; text-transform: none; }
+    .entry-card .copy-field-button::before { display: none; }
+    .entry-card .copy-field-button:hover { transform: translateY(-1px); background: #dff1ed; color: #376f6c; box-shadow: 0 3px 10px rgba(91,145,157,.15); }
+    .entry-card .copy-field-button:disabled { cursor: default; opacity: .8; }
+    .subject-chips { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .subject-chips span { padding: .18rem .55rem; border-radius: 999px; background: #e7f3f1; color: #427f7c; font-size: .82rem; }
+    .entry-copy-actions { display: flex; flex-wrap: wrap; gap: .45rem; }
 
     .empty-state {
       text-align: center;
@@ -388,6 +406,46 @@
       box-shadow: 0 8px 22px rgba(15, 23, 42, 1);
     }
 
+    .college-guide { margin-top: 2.4rem; }
+    .college-guide > p { max-width: 75ch; margin: .5rem 0 1rem; color: #687a90; line-height: 1.6; }
+    .college-compare-cta { margin: 1.25rem 0 .8rem; padding: 1rem 1.15rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border: 1px solid rgba(88,139,177,.2); border-radius: 16px; background: linear-gradient(110deg,rgba(228,246,242,.88),rgba(239,239,255,.92)); }
+    .college-compare-cta div { display: grid; gap: .2rem; }
+    .college-compare-cta strong { color: #344a64; }
+    .college-compare-cta span { color: #687a90; font-size: .9rem; }
+    .college-compare-cta a { flex: 0 0 auto; padding: .72rem 1rem; border-radius: 999px; background: linear-gradient(110deg,#73c9bd,#8294e8); color: #fff; font-weight: 750; text-decoration: none; }
+    .college-compare-cta a span { color: inherit; }
+    .college-compare-cta a:hover { filter: brightness(1.04); transform: translateY(-1px); }
+    .college-table-wrap { width: 100%; overflow-x: auto; border-radius: 14px; box-shadow: 0 12px 30px rgba(62,86,125,.18); }
+    .college-table { min-width: 960px; margin: 0; background: rgba(255,253,250,.96); box-shadow: none; }
+    .college-table th, .college-table td { padding: .85rem .9rem; vertical-align: top; line-height: 1.45; }
+    .college-table th { white-space: nowrap; }
+    .college-table td:first-child { min-width: 190px; color: #344a64; font-weight: 700; }
+    .college-table td:nth-child(2) { min-width: 205px; }
+    .college-table td:nth-child(3), .college-table td:nth-child(4) { min-width: 185px; }
+    .college-table td:last-child { min-width: 110px; }
+    .college-table a { font-weight: 700; }
+    .college-table-note { margin-top: .75rem !important; font-size: .82rem; }
+    .split-view-panel { position:fixed; inset:0 0 0 auto; z-index:30; width:50vw; display:none; flex-direction:column; border-left:1px solid rgba(79,112,149,.22); background:#fff; box-shadow:-16px 0 48px rgba(47,65,96,.16); }
+    .split-view-active .split-view-panel { display:flex; }
+    .split-view-active { width:50vw; min-height:100vh; overflow-x:hidden; }
+    .split-view-active .container { width:100%; max-width:none; }
+    .split-view-active .campus-frame-header { width:calc(100% - 16px); padding-left:12px; padding-right:12px; }
+    .split-view-active .entry-fields { grid-template-columns:minmax(0,1fr); }
+    .split-view-active .background-container,
+    .split-view-active body::before { display:none; }
+    .split-view-toolbar { min-height:58px; padding:10px 12px; display:flex; align-items:center; gap:10px; border-bottom:1px solid #e3e8ef; background:#fffdfb; }
+    .split-view-title { flex:1 1 auto; min-width:0; overflow:hidden; color:#344a64; font-size:.9rem; font-weight:700; text-overflow:ellipsis; white-space:nowrap; }
+    .split-view-toolbar a, .split-view-toolbar button { flex:0 0 auto; padding:8px 11px; border:1px solid #dfe5ef; border-radius:999px; background:#fff; color:#4c6682; font:inherit; font-size:.78rem; font-weight:700; text-decoration:none; cursor:pointer; }
+    .split-view-toolbar button { background:linear-gradient(110deg,#73c9bd,#8294e8); color:#fff; border:0; }
+    .split-view-hint { padding:7px 12px; color:#74849a; background:#f8f9fc; font-size:.72rem; line-height:1.4; }
+    .split-view-frame { width:100%; flex:1 1 auto; border:0; background:#fff; }
+    @media (max-width:760px) {
+      .split-view-active { width:100%; overflow:hidden; }
+      .split-view-active > :not(.split-view-panel) { visibility:hidden; }
+      .split-view-panel { width:100vw; border-left:0; }
+      .split-view-active .container { visibility:hidden; }
+    }
+
     th,
     td {
       padding: 0.6rem 0.75rem;
@@ -479,6 +537,7 @@
     .card:hover { box-shadow:0 23px 58px rgba(62,86,125,.14); }
     .card h2 { background:linear-gradient(110deg,#4b86b7,#7d83c8 60%,#bb849f); -webkit-background-clip:text; background-clip:text; }
     .entry-card { background:linear-gradient(145deg,#fffdf9,#f8f7ff); border-color:rgba(79,112,149,.18); box-shadow:0 10px 28px rgba(62,86,125,.1); }
+    .entry-field { border-color:rgba(79,112,149,.15); background:rgba(255,255,255,.62); }
     .entry-card h3 { color:#344a64; }
     .entry-card p { color:#62748a; }
     .entry-card small { color:#8793a3; }
@@ -489,6 +548,13 @@
     tr:nth-child(even) td { background:#f4f5fa; }
     td { color:#536982; border-color:rgba(79,112,149,.16); }
     td a { color:#527fba; }
+    @media (max-width: 640px) {
+      .entry-fields { grid-template-columns:minmax(0,1fr); gap:.55rem; }
+      .entry-card { padding:1rem; }
+      .entry-copy-actions button { flex:1 1 auto; }
+      .college-compare-cta { align-items: stretch; flex-direction: column; }
+      .college-compare-cta a { text-align: center; }
+    }
 
   </style>
 </head>
@@ -556,21 +622,25 @@
           {{#each dataEntries}}
             <div class="entry-card">
               <h3>{{this.name}}</h3>
-              <button onclick="copyDataAsLinesName('{{this.name}}')">Copy Name</button>
-
-              <p>Mobile: {{this.mobileNumber}}</p>
-              <button onclick="copyDataAsLinesMobile('{{this.mobileNumber}}')">Copy Mobile</button>
-
-              <p>Address: {{this.address}}</p>
-              <button onclick="copyDataAsLinesAdd('{{this.address}}')">Copy Address</button>
-
-              <p>Education: {{this.boardOfEducation}}</p>
-              <button onclick="copyDataAsLinesED('{{this.boardOfEducation}}')">Copy Education</button>
-
-              <p>Aadhar Number: {{this.adharNumber}}</p>
-              <button onclick="copyDataAsLinesAdhar('{{this.adharNumber}}')">Copy Aadhar</button>
-
-              <small>Created: {{this.createdAt}}</small>
+              <dl class="entry-fields">
+                <div class="entry-field"><dt>Name <button type="button" class="copy-field-button" data-copy="{{this.name}}" aria-label="Copy name">Copy</button></dt><dd>{{this.name}}</dd></div>
+                <div class="entry-field"><dt>Age <button type="button" class="copy-field-button" data-copy="{{this.age}}" aria-label="Copy age">Copy</button></dt><dd>{{this.age}}</dd></div>
+                <div class="entry-field"><dt>Mobile <button type="button" class="copy-field-button" data-copy="{{this.mobileNumber}}" aria-label="Copy mobile number">Copy</button></dt><dd>{{this.mobileNumber}}</dd></div>
+                <div class="entry-field"><dt>Email <button type="button" class="copy-field-button" data-copy="{{this.emailId}}" aria-label="Copy email">Copy</button></dt><dd>{{this.emailId}}</dd></div>
+                <div class="entry-field"><dt>Aadhar Number <button type="button" class="copy-field-button" data-copy="{{this.adharNumber}}" aria-label="Copy Aadhar number">Copy</button></dt><dd>{{this.adharNumber}}</dd></div>
+                <div class="entry-field"><dt>Address <button type="button" class="copy-field-button" data-copy="{{this.address}}" aria-label="Copy address">Copy</button></dt><dd>{{this.address}}</dd></div>
+                <div class="entry-field"><dt>Father&apos;s Name <button type="button" class="copy-field-button" data-copy="{{this.fathersName}}" aria-label="Copy father's name">Copy</button></dt><dd>{{this.fathersName}}</dd></div>
+                <div class="entry-field"><dt>Father&apos;s Mobile <button type="button" class="copy-field-button" data-copy="{{this.fatherMobileNumber}}" aria-label="Copy father's mobile">Copy</button></dt><dd>{{this.fatherMobileNumber}}</dd></div>
+                <div class="entry-field"><dt>Father&apos;s Email <button type="button" class="copy-field-button" data-copy="{{this.fatherEmail}}" aria-label="Copy father's email">Copy</button></dt><dd>{{this.fatherEmail}}</dd></div>
+                <div class="entry-field"><dt>Mother&apos;s Name <button type="button" class="copy-field-button" data-copy="{{this.mothersName}}" aria-label="Copy mother's name">Copy</button></dt><dd>{{this.mothersName}}</dd></div>
+                <div class="entry-field"><dt>Mother&apos;s Mobile <button type="button" class="copy-field-button" data-copy="{{this.motherMobileNumber}}" aria-label="Copy mother's mobile">Copy</button></dt><dd>{{this.motherMobileNumber}}</dd></div>
+                <div class="entry-field"><dt>Mother&apos;s Email <button type="button" class="copy-field-button" data-copy="{{this.motherEmail}}" aria-label="Copy mother's email">Copy</button></dt><dd>{{this.motherEmail}}</dd></div>
+                <div class="entry-field"><dt>Board of Education <button type="button" class="copy-field-button" data-copy="{{this.boardOfEducation}}" aria-label="Copy board of education">Copy</button></dt><dd>{{this.boardOfEducation}}</dd></div>
+                <div class="entry-field"><dt>Senior Secondary <button type="button" class="copy-field-button" data-copy="{{this.seniorSecondaryPercentage}}%" aria-label="Copy senior secondary percentage">Copy</button></dt><dd>{{this.seniorSecondaryPercentage}}%</dd></div>
+                <div class="entry-field"><dt>Secondary <button type="button" class="copy-field-button" data-copy="{{this.secondaryPercentage}}%" aria-label="Copy secondary percentage">Copy</button></dt><dd>{{this.secondaryPercentage}}%</dd></div>
+                <div class="entry-field"><dt>Subjects <button type="button" class="copy-field-button" data-copy-kind="subjects" aria-label="Copy subjects">Copy</button></dt><dd class="subject-chips">{{#each this.subjects}}<span>{{this}}</span>{{/each}}</dd></div>
+                <div class="entry-field"><dt>Created <button type="button" class="copy-field-button" data-copy="{{this.createdAt}}" aria-label="Copy creation date">Copy</button></dt><dd>{{this.createdAt}}</dd></div>
+              </dl>
             </div>
           {{/each}}
         </div>
@@ -581,75 +651,142 @@
         </div>
       {{/if}}
     </div>
-
+<!--
     <h3>Open in Split Screen:</h3>
     <ul>
-      <li><a href="#" onclick="return openSplitScreen('https://www.example.com')">Example.com</a></li>
-      <li><a href="#" onclick="return openSplitScreen('https://www.wikipedia.org')">Wikipedia</a></li>
-      <li><a href="#" onclick="return openSplitScreen('https://www.google.com')">Google</a></li>
+      <li><a href="https://www.example.com">Example.com</a></li>
+      <li><a href="https://www.wikipedia.org">Wikipedia</a></li>
+      <li><a href="https://www.google.com">Google</a></li>
     </ul>
-
-    <table>
-      <tr>
-        <th>College Name</th>
-        <th colspan="2">Admission Process</th>
-        <th colspan="2">Examination Process</th>
-        <th>Result</th>
-        <th>Link</th>
-      </tr>
-      <tr>
-        <th></th>
-        <th>Start</th>
-        <th>End</th>
-        <th>Start</th>
-        <th>End</th>
-        <th></th>
-        <th></th>
-      </tr>
-      <tr>
-        <td>Example College</td>
-        <td>01 Jan 2024</td>
-        <td>31 Jan 2024</td>
-        <td>01 Feb 2024</td>
-        <td>28 Feb 2024</td>
-        <td>Pass</td>
-        <td><a href="#" onclick="return openSplitScreen('https://www.google.com')">Google</a></td>
-      </tr>
-    </table>
+  -->
+    <section class="college-guide" aria-labelledby="college-guide-title">
+      <h2 id="college-guide-title">Private Engineering Colleges · B.Tech Admissions</h2>
+      <p>A curated India-wide guide to major private engineering colleges and their B.Tech entrance routes. Dates below are for the 2026 admission cycle; schedules and eligibility can change by campus, programme, and counselling round. Check the official admission page for the latest notice.</p>
+      <div class="college-compare-cta"><div><strong>Compare colleges side by side</strong><span>Review campus scale, placements, NIRF rank and admission details.</span></div><a href="/compare-colleges">Open college comparison <span aria-hidden="true">→</span></a></div>
+      <div class="college-table-wrap" role="region" aria-label="B.Tech college admissions table" tabindex="0">
+        <table class="college-table">
+          <thead>
+            <tr>
+              <th scope="col">College / campus</th>
+              <th scope="col">B.Tech entrance route</th>
+              <th scope="col">2026 application window</th>
+              <th scope="col">2026 exam window</th>
+              <th scope="col">Result / status</th>
+              <th scope="col">Official link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Vellore Institute of Technology (VIT), Vellore, Chennai, AP &amp; Bhopal</td><td>VITEEE 2026</td><td>Deadline: 12 Apr 2026</td><td>28 Apr–3 May 2026 (tentative)</td><td>Rank/result announced in May; counselling followed</td><td><a href="https://viteee.vit.ac.in/" target="_blank" rel="noopener noreferrer">VITEEE admissions</a></td></tr>
+            <tr><td>BITS Pilani, Goa &amp; Hyderabad</td><td>BITSAT 2026 (two sessions)</td><td>15 Dec 2025–19 Mar 2026; session-II registration also available</td><td>Session I: 15–16 Apr; Session II: 24–26 May 2026</td><td>Scores and admission iterations published through the portal</td><td><a href="https://www.bitsadmission.com/BITSAT_LP/index.html" target="_blank" rel="noopener noreferrer">BITS admissions</a></td></tr>
+            <tr><td>Manipal Institute of Technology (MAHE)</td><td>MET 2026</td><td>Phase I to 23 Mar; Phase II to 26 Apr 2026</td><td>Phase I: 13–14 Apr; Phase II: 23–24 May 2026</td><td>Merit list / counselling schedule published in June</td><td><a href="https://www.manipal.edu/entrancetest.html" target="_blank" rel="noopener noreferrer">MAHE entrance tests</a></td></tr>
+            <tr><td>SRM Institute of Science and Technology (SRMIST)</td><td>SRMJEEE 2026</td><td>Phase I deadline: 16 Apr 2026; later phases had separate registrations</td><td>Phase I: 24–29 Apr 2026; later phases in June and July</td><td>Phase-wise results and counselling through SRM portal</td><td><a href="https://www.srmist.edu.in/admission-india/" target="_blank" rel="noopener noreferrer">SRM admissions</a></td></tr>
+            <tr><td>Kalinga Institute of Industrial Technology (KIIT), Bhubaneswar</td><td>KIITEE 2026</td><td>Phase I deadline: 8 Apr; later phases through the year</td><td>Phase I: 16–20 Apr; further phases ran through Aug 2026</td><td>Phase-wise results; check current seat-allotment notices</td><td><a href="https://kiitee.kiit.ac.in/calendar-of-events/" target="_blank" rel="noopener noreferrer">KIITEE calendar</a></td></tr>
+            <tr><td>Amrita Vishwa Vidyapeetham (engineering campuses)</td><td>AEEE 2026 or JEE Main 2026</td><td>Phase-based registration; dates vary by phase</td><td>AEEE Phase I: 30 Jan–1 Feb; Phase II: 24–30 Apr 2026</td><td>Rank list and CSAP counselling via admissions portal</td><td><a href="https://www.amrita.edu/admissions/engineering/" target="_blank" rel="noopener noreferrer">Amrita engineering admissions</a></td></tr>
+            <tr><td>Chandigarh University</td><td>CUCET 2026 (B.E./B.Tech); qualifying routes depend on programme</td><td>25 Oct 2025–30 Sep 2026</td><td>Online exam available through 1 Oct 2026</td><td>Phase-wise result / scholarship status via CUCET portal</td><td><a href="https://cucet.cuchd.in/index.aspx" target="_blank" rel="noopener noreferrer">CUCET admissions</a></td></tr>
+            <tr><td>Lovely Professional University (LPU), Punjab</td><td>LPUNEST; JEE Main / CUET may also qualify for selected programmes</td><td>Multiple schedules; confirm programme-specific deadlines</td><td>Multiple test slots and phases in 2026</td><td>Score and scholarship outcome via applicant portal</td><td><a href="https://www.lpu.in/nest/btech/" target="_blank" rel="noopener noreferrer">LPUNEST B.Tech</a></td></tr>
+            <tr><td>JAIN (Deemed-to-be University), Faculty of Engineering &amp; Technology</td><td>JET (B.Tech); exemptions available for specified national/state exams</td><td>Check the current JET admission notice</td><td>JET B.Tech: 30 Apr–1 May 2026</td><td>JET result announced 2 May 2026</td><td><a href="https://set.jainuniversity.ac.in/btech-admissions-in-bangalore" target="_blank" rel="noopener noreferrer">JAIN B.Tech admissions</a></td></tr>
+            <tr><td>UPES, Dehradun</td><td>UPESEAT, JEE Main, CUET, SAT or qualifying-board route (programme dependent)</td><td>2026 admission cycle closed; see official portal for next cycle</td><td>UPESEAT slots / accepted scores vary by admission route</td><td>2026 cycle closed</td><td><a href="https://www.upes.ac.in/admissions/admission-alerts/upeseat" target="_blank" rel="noopener noreferrer">UPES B.Tech admissions</a></td></tr>
+            <tr><td>R.V. College of Engineering (RVCE), Bengaluru</td><td>COMEDK UGET / KCET; other quotas have separate criteria</td><td>COMEDK: 3 Feb–23 Mar 2026</td><td>COMEDK UGET: 9 May 2026</td><td>COMEDK scorecard released 29 May; counselling separately</td><td><a href="https://rvce.edu.in/" target="_blank" rel="noopener noreferrer">RVCE official site</a></td></tr>
+            <tr><td>Ramaiah Institute of Technology, Bengaluru</td><td>COMEDK UGET / KCET; quota-specific admission process</td><td>COMEDK: 3 Feb–23 Mar 2026</td><td>COMEDK UGET: 9 May 2026</td><td>COMEDK scorecard released 29 May; counselling separately</td><td><a href="https://www.msrit.edu/admissions.html" target="_blank" rel="noopener noreferrer">Ramaiah admissions</a></td></tr>
+            <tr><td>BMS College of Engineering, Bengaluru</td><td>COMEDK UGET / KCET; quota-specific admission process</td><td>COMEDK: 3 Feb–23 Mar 2026</td><td>COMEDK UGET: 9 May 2026</td><td>COMEDK scorecard released 29 May; counselling separately</td><td><a href="https://bmsce.ac.in/" target="_blank" rel="noopener noreferrer">BMSCE official site</a></td></tr>
+            <tr><td>Dayananda Sagar College of Engineering, Bengaluru</td><td>COMEDK UGET / KCET; quota-specific admission process</td><td>COMEDK: 3 Feb–23 Mar 2026</td><td>COMEDK UGET: 9 May 2026</td><td>COMEDK scorecard released 29 May; counselling separately</td><td><a href="https://admissions.dsce.edu.in/" target="_blank" rel="noopener noreferrer">DSCE admissions</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="college-table-note">This is a selected list of major institutions, not a complete directory of every private engineering college in India. Exam dates shown are 2026 cycle dates; future cycle dates are announced by each institution and exam authority.</p>
+    </section>
   </div>
 
-  <script>
-    function copyDataAsLinesName(data) {
-      navigator.clipboard.writeText(data);
-    }
-    function copyDataAsLinesMobile(data) {
-      navigator.clipboard.writeText(data);
-    }
-    function copyDataAsLinesAdd(data) {
-      navigator.clipboard.writeText(data);
-    }
-    function copyDataAsLinesED(data) {
-      navigator.clipboard.writeText(data);
-    }
-    function copyDataAsLinesAdhar(data) {
-      navigator.clipboard.writeText(data);
-    }
+    <aside class="split-view-panel" id="campusSplitView" aria-label="Split view" aria-hidden="true">
+      <div class="split-view-toolbar">
+        <button type="button" id="closeSplitView">Back to CampusHelp</button>
+        <span class="split-view-title" id="splitViewTitle">Linked page</span>
+        <a id="openSplitTarget" href="#" target="_blank" rel="noopener noreferrer">Open separately ↗</a>
+      </div>
+      <div class="split-view-hint">If the website blocks embedded viewing, use “Open separately” to view it in another tab.</div>
+      <iframe class="split-view-frame" id="splitViewFrame" title="Linked page"></iframe>
+    </aside>
+
+    <script>
+    document.addEventListener('click', async (event) => {
+      const button = event.target.closest('.copy-field-button');
+      if (!button) return;
+
+      const value = button.dataset.copyKind === 'subjects'
+        ? Array.from(button.closest('.entry-field').querySelectorAll('.subject-chips span'))
+            .map((subject) => subject.textContent.trim()).join(', ')
+        : button.dataset.copy || '';
+      const originalLabel = button.textContent;
+      const originalAriaLabel = button.getAttribute('aria-label');
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(value);
+        } else {
+          const temporaryInput = document.createElement('textarea');
+          temporaryInput.value = value;
+          temporaryInput.setAttribute('readonly', '');
+          temporaryInput.style.position = 'fixed';
+          temporaryInput.style.opacity = '0';
+          document.body.appendChild(temporaryInput);
+          temporaryInput.select();
+          const copied = document.execCommand('copy');
+          temporaryInput.remove();
+          if (!copied) throw new Error('Clipboard copy failed');
+        }
+        button.textContent = 'Copied';
+        button.setAttribute('aria-label', 'Copied to clipboard');
+      } catch (error) {
+        button.textContent = 'Retry';
+        button.setAttribute('aria-label', 'Copy failed. Retry');
+      }
+      button.disabled = true;
+      window.setTimeout(() => {
+        button.textContent = originalLabel;
+        button.disabled = false;
+        button.setAttribute('aria-label', originalAriaLabel);
+      }, 1400);
+    });
 
     function openSplitScreen(targetUrl) {
-      const screenWidth = window.screen.availWidth;
-      const screenHeight = window.screen.availHeight;
-      const width = Math.floor(screenWidth / 2);
-      const height = screenHeight;
-
-      window.open(window.location.href, 'mySiteWindow',
-        `width=${width},height=${height},left=0,top=0`);
-
-      const targetSite = window.open(targetUrl, 'targetSiteWindow',
-        `width=${width},height=${height},left=${width},top=0`);
-
-      if (targetSite) targetSite.focus();
+      const frame = document.getElementById('splitViewFrame');
+      const panel = document.getElementById('campusSplitView');
+      const link = Array.from(document.querySelectorAll('a[href]')).find((item) => item.href === targetUrl);
+      const title = document.getElementById('splitViewTitle');
+      const separateLink = document.getElementById('openSplitTarget');
+      frame.src = targetUrl;
+      frame.title = link ? link.textContent.trim() : 'Linked page';
+      title.textContent = link ? link.textContent.trim() : targetUrl;
+      separateLink.href = targetUrl;
+      document.body.classList.add('split-view-active');
+      panel.setAttribute('aria-hidden', 'false');
+      document.getElementById('closeSplitView').focus();
       return false;
     }
+
+    function closeSplitScreen() {
+      const panel = document.getElementById('campusSplitView');
+      document.body.classList.remove('split-view-active');
+      panel.setAttribute('aria-hidden', 'true');
+      document.getElementById('splitViewFrame').src = 'about:blank';
+    }
+
+    document.getElementById('closeSplitView').addEventListener('click', closeSplitScreen);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && document.body.classList.contains('split-view-active')) closeSplitScreen();
+    });
+
+    // Keep every extension-page link in the same-browser side-by-side workflow.
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('a[href]');
+      if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (link.closest('#campusSplitView') || link.closest('.campus-frame-header') || link.closest('.user-info')) return;
+
+      const targetUrl = link.getAttribute('href');
+      if (!targetUrl || targetUrl.startsWith('#') || !/^https?:\/\//i.test(link.href)) return;
+
+      event.preventDefault();
+      openSplitScreen(link.href);
+    });
 
     // scroll‑driven triangle motion
     const triangle1 = document.getElementById('triangle1');

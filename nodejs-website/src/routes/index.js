@@ -109,6 +109,11 @@ router.get('/extension', isAuthenticated, async (req, res) => {
   }
 });
 
+// College comparison workspace (kept behind the same login as the student workspace).
+router.get('/compare-colleges', isAuthenticated, (req, res) => {
+  res.render('compare-colleges', { user: req.session.user });
+});
+
 module.exports = router;
 router.get('/debug-users', async (req, res) => {
   const users = await require('../models/user').find({});

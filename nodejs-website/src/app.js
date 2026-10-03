@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'src/public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Session configuration
 app.use(session({
@@ -50,4 +50,4 @@ app.use((req, res, next) => {
 module.exports = app;
 // This is a simple Express application that connects to a MongoDB database,
 // uses session management, and serves static files. It also sets up a view engine
-// and includes error handling middleware. The application listens on a specified port          
+// and includes error handling middleware. The application listens on a specified port
